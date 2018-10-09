@@ -1,7 +1,15 @@
 import UIKit
 import PlaygroundSupport
 
-class View: UIView {
+@dynamicMemberLookup
+struct Selectors {
+
+    subscript(dynamicMember member: String) -> Selector {
+        return Selector(member)
+    }
+}
+
+final class View: UIView {
 
     private let selectors: Selectors = .init()
 
@@ -23,13 +31,6 @@ class View: UIView {
 
     @objc func tap() {
         print("tap")
-    }
-}
-
-@dynamicMemberLookup
-struct Selectors {
-    subscript(dynamicMember member: String) -> Selector {
-        return Selector(member)
     }
 }
 
