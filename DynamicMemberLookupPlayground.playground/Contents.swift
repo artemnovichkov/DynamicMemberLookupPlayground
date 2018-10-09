@@ -9,9 +9,14 @@ struct Selectors {
     }
 }
 
-final class View: UIView {
+extension NSObject {
 
-    private let selectors: Selectors = .init()
+    var selectors: Selectors {
+        return Selectors()
+    }
+}
+
+final class View: UIView {
 
     private(set) lazy var button: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
